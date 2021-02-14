@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 // ----------------------------------------------------------
@@ -29,17 +29,34 @@ const Number = styled.h1`
   color: ${(props) => props.theme.active};
 `;
 
+// -------------------------------------------------------
+
 const CounterApp = () => {
+  const [state, setState] = useState({
+    counter1: 10,
+    counter2: 20,
+    counter3: 30,
+    counter4: 40,
+    counter5: 50,
+  });
+
+  const { counter1, counter2 } = state;
+
   return (
     <CustomFragment>
       <Title>
-        Counter <Number> {0} </Number>
+        Counter1 <Number> {counter1} </Number>
       </Title>
+
+      <Title>
+        Counter2 <Number> {counter2} </Number>
+      </Title>
+
       <hr />
 
-      <Button>-1</Button>
-      <Button>Reset Counter</Button>
-      <Button>+1</Button>
+      {/* <Button onClick={() => setCounter(counter - 1)}>-1</Button>
+      <Button onClick={() => setCounter(0)}>Reset Counter</Button> */}
+      <Button onClick={() => setState({...state, counter1: counter1 + 1 })}>+1</Button>
     </CustomFragment>
   );
 };
