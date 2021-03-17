@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import themes from "../constants/theme";
 import { getTheme } from "../utils/getTheme";
-import CounterApp from "./useState/CounterApp";
+// import CounterApp from "./useState/CounterApp";
+// import CounterCustomHook from './useState/CounterCustomHook'
+import SimpleForm from "./useEffect/SimpleForm";
 import { Switch } from "@material-ui/core";
 
 const Content = styled.div`
@@ -13,6 +15,7 @@ const Content = styled.div`
   font-size: calc(10px + 2vmin);
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color};
+  overflow: hidden;
 `;
 
 const ButtonTheme = styled.div`
@@ -37,7 +40,7 @@ const HookApp = () => {
   return (
     <ThemeProvider theme={getTheme(themeName)}>
       <Content>
-        <CounterApp />
+        <SimpleForm />
 
         <ButtonTheme>
           <span>Dark theme?</span>
