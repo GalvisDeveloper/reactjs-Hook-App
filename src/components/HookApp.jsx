@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import themes from "../constants/theme";
 import { getTheme } from "../utils/getTheme";
-// import CounterApp from "./useState/CounterApp";
-// import CounterCustomHook from './useState/CounterCustomHook'
+import { Menu } from "./Menu/Menu";
+import CounterCustomHook from "./useState/CounterCustomHook";
 import SimpleForm from "./useEffect/SimpleForm";
-import { Switch } from "@material-ui/core";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NotFound from "./NotFound/NotFound";
+import Home from "./Home/Home";
 
 const Content = styled.div`
   min-height: 100vh;
-  display: flex;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -18,34 +19,34 @@ const Content = styled.div`
   overflow: hidden;
 `;
 
-const ButtonTheme = styled.div`
+const Container = styled.div`
   display: flex;
+  min-height: 90vh;
+  justify-content: center;
   align-items: center;
-  flex-direction: column;
-  width: 50px;
 `;
 
 const HookApp = () => {
   // eslint-disable-next-line
   const [themeName, setThemeName] = useState(themes.light);
-
-  const handleChangeSwitch = () => {
-      if (themeName === themes.light) {
-          setThemeName(themes.dark);
-      }else {
-          setThemeName(themes.light);
-      }
-  }
-
   return (
     <ThemeProvider theme={getTheme(themeName)}>
       <Content>
-        <SimpleForm />
-
-        <ButtonTheme>
-          <span>Dark theme?</span>
-          <Switch color="primary" onChange = {handleChangeSwitch} />
-        </ButtonTheme>
+        <Router>
+          <Menu themeName={themeName} setThemeName={setThemeName} />
+          <Container>
+            <Switch>
+              <Route exact path="/" component={() => <Home />} />
+              <Route
+                exact
+                path="/UseState"
+                component={() => <CounterCustomHook />}
+              />
+              <Route exact path="/UseEffect" component={() => <SimpleForm />} />
+              <Route exact component={() => <NotFound />} />
+            </Switch>
+          </Container>
+        </Router>
       </Content>
     </ThemeProvider>
   );

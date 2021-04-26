@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 // ----------------------------------------
 
@@ -23,13 +23,12 @@ const CustomFragment = styled.div`
 // -------------------------------------
 
 const SimpleForm = () => {
-
   return (
     <CustomFragment>
       <Title size={3}> Use Effect </Title>
+      <hr />
     </CustomFragment>
   );
-
 };
 
 export default SimpleForm;
