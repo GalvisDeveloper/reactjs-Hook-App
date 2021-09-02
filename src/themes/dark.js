@@ -6,4 +6,6 @@ export default {
   color: "white",
   button: "white",
   buttonText: "black",
+  inputText: "",
+  inputBackground: "",
 };

@@ -5,4 +5,6 @@ export default {
   button: "black",
   buttonText: "white",
   active: "dodgerblue",
+  inputText: "black",
+  inputBackground: "",
 }

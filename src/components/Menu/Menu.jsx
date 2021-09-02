@@ -10,11 +10,10 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import HourglassFullIcon from "@material-ui/icons/HourglassFull";
 import VideogameAssetIcon from "@material-ui/icons/VideogameAsset";
 // React
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 // Css on JS
 import styled from "styled-components";
-import CounterCustomHook from "../useState/CounterCustomHook";
 
 const Container = styled.div`
   display: flex;
@@ -58,6 +57,7 @@ const ThemeText = styled.div`
     font-weight: 400;
     line-height: 18px;
     color: white;
+    font-size: calc(10px + 2vmin);
   }
 `;
 
@@ -69,7 +69,8 @@ const SwitchContainer = styled.div`
 
 export const Menu = ({ themeName, setThemeName }) => {
   const classes = useStyles();
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState("home");
+  const history = useHistory();
 
   const handleChangeSwitch = () => {
     if (themeName === "light") {
@@ -79,78 +80,85 @@ export const Menu = ({ themeName, setThemeName }) => {
     }
   };
 
-  const handleChangeButton = (e, newValue) => {
+  const handleChangeNavigation = (e, newValue) => {
+    window.localStorage.setItem("route", e.target.innerText);
     setValue(newValue);
   };
 
   const handleRoute = (e) => {
-    console.log(e);
-    window.location.pathname = e.target.innerText;
+    history.push(e.target.innerText);
   };
+
+  useEffect(() => {
+    const localRoute = window.localStorage.getItem("route");
+
+    let getHistory = history.location.pathname.replace("/", "");
+
+    if (!localRoute && getHistory === "") {
+      window.localStorage.setItem("route", value);
+      setValue(localRoute);
+    } else if (!localRoute && getHistory !== "") {
+      window.localStorage.setItem("route", getHistory);
+      setValue(getHistory);
+    } else {
+      window.localStorage.setItem("route", getHistory);
+      setValue(getHistory);
+    }
+  }, []);
 
   return (
     <Container>
       <LogoMenu>
-        <img
-          src="https://www.stop-corrida.fr/wp-content/uploads/2019/08/hook-logo-1.png"
-          alt="hook"
-        />
+        <Link to="/">
+          <img
+            src="https://www.stop-corrida.fr/wp-content/uploads/2019/08/hook-logo-1.png"
+            alt="hook"
+          />
+        </Link>
       </LogoMenu>
 
       <BottomNavigation
         value={value}
-        onChange={(e, newValue) => setValue(newValue)}
         className={classes.root}
+        onChange={handleChangeNavigation}
         onClick={handleRoute}
         showLabels
       >
-        {/* <Link to="/useState"> */}
         <BottomNavigationAction
-          label="UseState"
-          value="state"
+          label="useState"
+          value="useState"
           icon={<VideogameAssetIcon />}
         />
-        {/* </Link> */}
 
-        {/* <Link to="/useEffect"> */}
         <BottomNavigationAction
-          label="UseEffect"
-          value="effect"
+          label="useEffect"
+          value="useEffect"
           icon={<HourglassFullIcon />}
         />
-        {/* </Link> */}
 
-        {/* <Link to="/useFetch"> */}
         <BottomNavigationAction
-          label="UseFetch"
-          value="fetch"
+          label="useFetch"
+          value="useFetch"
           icon={<LocationOnIcon />}
         />
-        {/* </Link> */}
 
-        {/* <Link to="/useRef"> */}
         <BottomNavigationAction
-          label="UseRef"
-          value="ref"
+          label="useRef"
+          value="useRef"
           icon={<FolderIcon />}
         />
-        {/* </Link> */}
 
-        {/* <Link to="/useMemo"> */}
         <BottomNavigationAction
-          label="UseMemo"
-          value="memo"
+          label="useMemo"
+          value="useMemo"
           icon={<FolderIcon />}
         />
-        {/* </Link> */}
 
-        {/* <Link to="/useCallBack"> */}
         <BottomNavigationAction
-          label="UseCallBack"
-          value="callBack"
+          label="useCallBack"
+          value="useCallBack"
           icon={<FolderIcon />}
         />
-        {/* </Link> */}
       </BottomNavigation>
 
       <ButtonTheme>
