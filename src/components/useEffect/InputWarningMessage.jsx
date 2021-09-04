@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 
-const Additional = () => {
+const InputWarningMessage = () => {
   let coors = "";
 
+
+  //Algo anda mal aqui ome
   const mouseMove = (e) => {
     coors = { x: e.x, y: e.y };
   };
@@ -21,10 +23,10 @@ const Additional = () => {
   }, []);
 
   return (
-    <div>
-      <h4>Just return a message</h4>
-    </div>
+    <>
+      <h5 style={{ color: "red" }}>Just return a message</h5>
+    </>
   );
 };
 
-export default Additional;
+export default InputWarningMessage;
