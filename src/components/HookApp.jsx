@@ -3,8 +3,8 @@ import styled, { ThemeProvider } from "styled-components";
 import themes from "../constants/theme";
 import { getTheme } from "../utils/getTheme";
 import Menu from "./Menu/Menu";
-import CounterCustomHook from "./UseState/CounterCustomHook";
-import SimpleForm from "./UseEffect/SimpleForm";
+// import SimpleForm from "./UseEffect/SimpleForm";
+// import CounterApp from "./UseState/CounterApp";
 import {
   BrowserRouter as Router,
   // Redirect,
@@ -13,6 +13,8 @@ import {
 } from "react-router-dom";
 import NotFound from "./NotFound/NotFound";
 import Home from "./Home/Home";
+import CounterCustomHook from "./UseState/CounterCustomHook";
+import FormWithCustomHook from "./UseEffect/FormWithCustomHook";
 
 const Content = styled.div`
   min-height: 100vh;
@@ -40,6 +42,7 @@ const HookApp = () => {
       <Content>
         <Router>
           <Menu themeName={themeName} setThemeName={setThemeName} />
+
           {/* <Redirect from="/" to="/home" /> */}
           <Container>
             <Switch>
@@ -49,7 +52,12 @@ const HookApp = () => {
                 path="/useState"
                 component={() => <CounterCustomHook />}
               />
-              <Route exact path="/useEffect" component={() => <SimpleForm />} />
+              <Route
+                exact
+                path="/useEffect"
+                component={() => <FormWithCustomHook />}
+              />
+
               <Route exact component={() => <NotFound />} />
             </Switch>
           </Container>

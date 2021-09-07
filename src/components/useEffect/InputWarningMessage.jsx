@@ -1,18 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const InputWarningMessage = () => {
-  let coors = "";
 
+  const [coors, setCoors] = useState({x: 0, y:0});
 
-  //Algo anda mal aqui ome
-  const mouseMove = (e) => {
-    coors = { x: e.x, y: e.y };
-  };
+  let {x , y} = coors;
 
-  useEffect(() => {
+   useEffect(() => {
     const mouseMove = (e) => {
       const coors = { x: e.x, y: e.y };
-      console.log(coors);
+      setCoors(coors);
     };
 
     window.addEventListener("mousemove", mouseMove);
@@ -25,6 +22,8 @@ const InputWarningMessage = () => {
   return (
     <>
       <h5 style={{ color: "red" }}>Just return a message</h5>
+      <p><strong>x: </strong>{x}</p>
+      <p><strong>y: </strong>{y}</p>
     </>
   );
 };

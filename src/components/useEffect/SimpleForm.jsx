@@ -62,17 +62,6 @@ const SimpleForm = () => {
     });
   };
 
-  // useEffect(() => {
-  //   effect
-  //   return () => {
-  //     cleanup
-  //   };
-  // }, [input]);
-
-  // useEffect(() => {
-  //   console.log("log");
-  // }, []);
-
   return (
     <CustomFragment>
       <Title size={3}> Use Effect </Title>
