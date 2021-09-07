@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useForm } from "./../../hooks/useForm";
+import InputWarningMessage from "./InputWarningMessage";
 
 // ----------------------------------------
 
@@ -51,7 +52,17 @@ const ButtonForm = styled.button`
   border: none;
   width: 80px;
   background-color: red;
-  color: ${(props) => props.theme.color};
+  color: white;
+  font-size: 20px;
+  margin: auto;
+`;
+
+const OptionalMessage = styled.div`
+  text-align: center;
+  display: block;
+  p {
+    font-size: 16px;
+  }
 `;
 
 // -------------------------------------
@@ -122,10 +133,10 @@ const FormWithCustomHook = () => {
         </CustomFragment>
 
         {name && email && password && (
-          <>
+          <OptionalMessage>
             <ButtonForm type="submit">Save</ButtonForm>
             <p>Click and Look the console </p>
-          </>
+          </OptionalMessage>
         )}
       </form>
     </CustomFragment>
