@@ -38,7 +38,7 @@ const Number = styled.h1`
 
 // --------------------------------------
 const CounterCustomHook = () => {
-  const { state: counter, increment, decrement, resetCounter } = useCounter(0);
+  const { counter, increment, decrement, resetCounter } = useCounter(0);
 
   return (
     <CustomFragment>
