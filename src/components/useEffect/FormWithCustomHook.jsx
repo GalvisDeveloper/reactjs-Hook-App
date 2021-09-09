@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useForm } from "./../../hooks/useForm";
-import InputWarningMessage from "./InputWarningMessage";
 
 // ----------------------------------------
 
@@ -27,7 +26,7 @@ const InputText = styled.input`
   border: 2px solid black;
   outline: none;
   padding: 8px;
-  color: #3f51b5;
+  color: ${(props) => props.theme.inputText};
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -51,8 +50,8 @@ const ButtonForm = styled.button`
   border-radius: 8px;
   border: none;
   width: 80px;
-  background-color: red;
-  color: white;
+  background-color: ${(props) => props.theme.button};
+  color: ${(props) => props.theme.buttonText};
   font-size: 20px;
   margin: auto;
 `;

@@ -15,7 +15,7 @@ import NotFound from "./NotFound/NotFound";
 import Home from "./Home/Home";
 import CounterCustomHook from "./UseState/CounterCustomHook";
 import FormWithCustomHook from "./UseEffect/FormWithCustomHook";
-import MultipleCustomHooks from "./Example/MultipleCustomHooks";
+import MultipleCustomHooks from "./UseFetch/MultipleCustomHooks";
 
 const Content = styled.div`
   min-height: 100vh;

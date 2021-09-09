@@ -16,8 +16,8 @@ export const useFetch = (url) => {
       .then((res) => res.json())
       .then((data) =>
         setState({
+          ...initialState,
           loading: false,
-          error: null,
           data,
         })
       );

@@ -1,7 +1,7 @@
 import React from "react";
 import { DualRing } from "react-awesome-spinners";
 
-import { useFetch } from "./../../hooks/useFetch";
+import { useFetch } from "../../hooks/useFetch";
 import { useCounter } from "../../hooks/useCounter";
 
 import styled from "styled-components";
@@ -40,10 +40,10 @@ const BlockQuote = styled.blockquote`
 
 const Button = styled.button`
   align-items: center;
-  background-color: red;
+  background-color: ${(props) => props.theme.button};
   border-radius: 8px;
   border: none;
-  color: white;
+  color: ${(props) => props.theme.buttonText};
   display: flex;
   font-size: 20px;
   justify-content: center;
