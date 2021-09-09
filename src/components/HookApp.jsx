@@ -15,6 +15,7 @@ import NotFound from "./NotFound/NotFound";
 import Home from "./Home/Home";
 import CounterCustomHook from "./UseState/CounterCustomHook";
 import FormWithCustomHook from "./UseEffect/FormWithCustomHook";
+import MultipleCustomHooks from "./Example/MultipleCustomHooks";
 
 const Content = styled.div`
   min-height: 100vh;
@@ -57,7 +58,11 @@ const HookApp = () => {
                 path="/useEffect"
                 component={() => <FormWithCustomHook />}
               />
-
+              <Route
+                exact
+                path="/useFetch"
+                component={() => <MultipleCustomHooks />}
+              />
               <Route exact component={() => <NotFound />} />
             </Switch>
           </Container>
