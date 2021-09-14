@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // import SimpleForm from "./UseEffect/SimpleForm";
 // import CounterApp from "./UseState/CounterApp";
 import {
   BrowserRouter as Router,
   // Redirect,
   Route,
-  Switch,
+  Switch
 } from "react-router-dom";
 
 import Menu from "./Menu/Menu";
@@ -38,7 +38,7 @@ const Container = styled.div`
 
 const initialTheme = {
   isDark: false,
-  name: themes.light,
+  name: themes.light
 };
 
 const HookApp = () => {
