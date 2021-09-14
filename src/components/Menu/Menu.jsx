@@ -37,14 +37,6 @@ const LogoMenu = styled.div`
   }
 `;
 
-const useStyles = makeStyles({
-  root: {
-    width: 500,
-    borderRadius: 30,
-    alignItems: "center",
-  },
-});
-
 const ButtonTheme = styled.div`
   display: flex;
   justify-content: center;
@@ -65,20 +57,21 @@ const SwitchContainer = styled.div`
   padding-top: 3px;
 `;
 
+const useStyles = makeStyles({
+  root: {
+    width: 500,
+    borderRadius: 30,
+    alignItems: "center",
+  },
+});
+
 // COMPONENT -------------------------------------------
 
-export const Menu = ({ themeName, setThemeName }) => {
+export const Menu = ({ theme, changeTheme }) => {
   const classes = useStyles();
   const [value, setValue] = useState("home");
   const history = useHistory();
-
-  const handleChangeSwitch = () => {
-    if (themeName === "light") {
-      setThemeName("dark");
-    } else {
-      setThemeName("light");
-    }
-  };
+  const { isDark } = theme;
 
   const handleChangeNavigation = (e, newValue) => {
     window.localStorage.setItem("route", e.target.innerText);
@@ -166,7 +159,7 @@ export const Menu = ({ themeName, setThemeName }) => {
           <p>Dark theme?</p>
         </ThemeText>
         <SwitchContainer>
-          <Switch color="secondary" onChange={handleChangeSwitch} />
+          <Switch checked={isDark} color="secondary" onChange={changeTheme} />
         </SwitchContainer>
       </ButtonTheme>
     </Container>

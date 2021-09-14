@@ -1,8 +1,4 @@
-import React, { useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
-import themes from "../constants/theme";
-import { getTheme } from "../utils/getTheme";
-import Menu from "./Menu/Menu";
+import React, { useState, useEffect } from "react";
 // import SimpleForm from "./UseEffect/SimpleForm";
 // import CounterApp from "./UseState/CounterApp";
 import {
@@ -11,11 +7,17 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+
+import Menu from "./Menu/Menu";
 import NotFound from "./NotFound/NotFound";
 import Home from "./Home/Home";
 import CounterCustomHook from "./UseState/CounterCustomHook";
 import FormWithCustomHook from "./UseEffect/FormWithCustomHook";
 import MultipleCustomHooks from "./UseFetch/MultipleCustomHooks";
+
+import themes from "../constants/theme";
+import { getTheme } from "../utils/getTheme";
+import styled, { ThemeProvider } from "styled-components";
 
 const Content = styled.div`
   min-height: 100vh;
@@ -34,15 +36,50 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const initialTheme = {
+  isDark: false,
+  name: themes.light,
+};
+
 const HookApp = () => {
   // eslint-disable-next-line
-  const [themeName, setThemeName] = useState(themes.light);
+  const [theme, setTheme] = useState(initialTheme);
+
+  const { isDark } = theme;
+
+  const changeTheme = () => {
+    if (isDark) {
+      setTheme({ isDark: false, name: themes.light });
+      localStorage.setItem("isDark", false);
+      console.log("Light --- ");
+      // console.log(isDark);
+    } else {
+      setTheme({ isDark: true, name: themes.dark });
+      localStorage.setItem("isDark", true);
+      console.log("Dark --- ");
+      // console.log(isDark);
+    }
+  };
+
+  // useEffect(() => {
+  // let preferColor = "light";
+  // // console.log(window.matchMedia("(prefers-color-scheme: dark)"));
+  // if (localStorage.getItem("isDark") === null) {
+  //   preferColor = "dark";
+  //   const darkPref = window.matchMedia(
+  //     `(prefers-color-scheme: ${preferColor})`
+  //   );
+  //   localStorage.setItem("isDark", darkPref.matches);
+  //   localStorage.setItem("theme", preferColor);
+  // }
+  // console.log(theme);
+  // });
 
   return (
-    <ThemeProvider theme={getTheme(themeName)}>
+    <ThemeProvider theme={getTheme(theme.name)}>
       <Content>
         <Router>
-          <Menu themeName={themeName} setThemeName={setThemeName} />
+          <Menu theme={theme.name} changeTheme={changeTheme} />
 
           {/* <Redirect from="/" to="/home" /> */}
           <Container>

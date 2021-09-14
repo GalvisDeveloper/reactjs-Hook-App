@@ -66,12 +66,14 @@ const OptionalMessage = styled.div`
 
 // -------------------------------------
 
+const initialForm = {
+  name: "",
+  email: "",
+  password: "",
+};
+
 const FormWithCustomHook = () => {
-  const [formValues, handleInputChange] = useForm({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const [formValues, handleInputChange] = useForm(initialForm);
 
   const { name, email, password } = formValues;
 
