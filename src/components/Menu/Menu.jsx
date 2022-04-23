@@ -97,7 +97,17 @@ export const Menu = ({ theme, changeTheme }) => {
       window.localStorage.setItem("route", getHistory);
       setValue(getHistory);
     }
+
   }, []);
+
+  // useEffect(() => {
+  //   if (localStorage.route === "" || localStorage.route === "/") {
+  //     console.log("JOIN");
+  //     setValue("home");
+  //   }
+  // }, []);
+
+  // console.log(value)
 
   return (
     <Container>

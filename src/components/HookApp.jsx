@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import SimpleForm from "./UseEffect/SimpleForm";
 // import CounterApp from "./UseState/CounterApp";
 import {
@@ -60,6 +60,12 @@ const HookApp = () => {
       // console.log(isDark);
     }
   };
+
+  // useEffect(() => {
+  //   if (localStorage.route && (localStorage.ruote === "" || localStorage.route === "/")) {
+  //     localStorage.setItem("route", "home");
+  //   }
+  // }, [])
 
   // useEffect(() => {
   // let preferColor = "light";

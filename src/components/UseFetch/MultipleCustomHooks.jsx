@@ -5,6 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { useCounter } from "../../hooks/useCounter";
 
 import styled from "styled-components";
+import { errorBoundary } from "../ErrorBoundary/ErrorBoundary";
 
 const Title = styled.div`
   font-size: ${(props) => props.size}em;
@@ -52,12 +53,17 @@ const Button = styled.button`
   width: auto;
 `;
 
+const ButtonGroup = styled.div`
+  display:flex;
+  /* margin: auto; */
+  padding-right: 10px;
+`
+
 const MultipleCustomHooks = () => {
-  let { counter, increment, resetCounter } = useCounter(1);
+  let { counter, increment, decrement, resetCounter } = useCounter(1);
 
   const { loading, data } = useFetch(
-    `https://breakingbadapi.com/api/quotes/${
-      counter > 30 ? resetCounter() : counter
+    `https://breakingbadapi.com/api/quotes/${counter > 30 ? resetCounter() : counter
     }`
   );
 
@@ -79,8 +85,12 @@ const MultipleCustomHooks = () => {
             <footer>{author}</footer>
           </BlockQuote>
         )}
-
-        <Button onClick={() => increment(1)}>Next Quote</Button>
+        <ButtonGroup>
+          {counter > 1 &&
+            <Button onClick={() => decrement(1)} disabled={counter === 1} >Previous Quote</Button>
+          }
+          <Button onClick={() => increment(1)}>Next Quote</Button>
+        </ButtonGroup>
       </CustomFragment>
     </CustomFragment>
   );
