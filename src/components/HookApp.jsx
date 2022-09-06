@@ -11,7 +11,7 @@ import {
 import Menu from "./Menu/Menu";
 import NotFound from "./NotFound/NotFound";
 import Home from "./Home/Home";
-import CounterCustomHook from "./UseState/CounterCustomHook";
+import CounterCustomHook from "./State/CounterCustomHook";
 import FormWithCustomHook from "./UseEffect/FormWithCustomHook";
 import MultipleCustomHooks from "./UseFetch/MultipleCustomHooks";
 
