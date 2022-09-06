@@ -14,6 +14,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 // Css on JS
 import styled from "styled-components";
+import { SdStorageOutlined } from "@material-ui/icons";
 
 const Container = styled.div`
   display: flex;
@@ -106,8 +107,8 @@ export const Menu = ({ theme, changeTheme }) => {
   //     setValue("home");
   //   }
   // }, []);
-  console.log(theme)
-  
+  // console.log(theme)
+
 
   return (
     <Container>
@@ -126,11 +127,12 @@ export const Menu = ({ theme, changeTheme }) => {
         onChange={handleChangeNavigation}
         onClick={handleRoute}
         showLabels
+        style={{width: 'auto'}}
       >
         <BottomNavigationAction
           label="useState"
           value="useState"
-          icon={<VideogameAssetIcon />}
+          icon={<SdStorageOutlined />}
         />
 
         <BottomNavigationAction
@@ -148,6 +150,12 @@ export const Menu = ({ theme, changeTheme }) => {
         <BottomNavigationAction
           label="useRef"
           value="useRef"
+          icon={<FolderIcon />}
+        />
+
+        <BottomNavigationAction
+          label="useLayoutEffect"
+          value="useLayoutEffect"
           icon={<FolderIcon />}
         />
 

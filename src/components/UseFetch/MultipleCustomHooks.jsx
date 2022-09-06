@@ -6,13 +6,8 @@ import { useFetch, useCounter } from "../../hooks";
 import styled from "styled-components";
 import { errorBoundary } from "../ErrorBoundary/ErrorBoundary";
 import BlockQuote from "./BlockQuote";
+import { Title } from "../../styles/General";
 
-const Title = styled.div`
-  font-size: ${(props) => props.size}em;
-  font-family: fantasy;
-  text-align: center;
-  color: ${(props) => props.theme.color};
-`;
 
 const CustomFragment = styled.div`
   padding: 70px;

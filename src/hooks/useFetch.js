@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const initialState = {
   data: null,
   loading: true,
-  error: null,
+  hasError: null,
 };
 
 export const useFetch = (url) => {
@@ -20,7 +20,13 @@ export const useFetch = (url) => {
           loading: false,
           data,
         })
-      );
+      ).catch(e => {
+        setState({
+          ...initialState,
+          loading: false,
+          error: e,
+        })
+      });
   }, [url]);
 
   return state;

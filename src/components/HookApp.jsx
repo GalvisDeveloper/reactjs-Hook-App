@@ -18,7 +18,10 @@ import MultipleCustomHooks from "./UseFetch/MultipleCustomHooks";
 import themes from "../constants/theme";
 import { getTheme } from "../utils/getTheme";
 import styled, { ThemeProvider } from "styled-components";
-import UseRef from "./UseRef/UseRef";
+import FocusScreen from "./UseRef/FocusScreen";
+import UseMemo from "./UseMemo/UseMemo";
+import UseCallBack from "./UseCallBack/UseCallBack";
+import Layout from "./UseLayoutEffect/Layout";
 
 const Content = styled.div`
   min-height: 100vh;
@@ -110,7 +113,22 @@ const HookApp = () => {
               <Route 
                 exact
                 path="/useRef"
-                component={() => <UseRef />}
+                component={() => <FocusScreen />}
+              />
+               <Route 
+                exact
+                path="/useLayoutEffect"
+                component={() => <Layout />}
+              />
+              <Route 
+                exact
+                path="/useMemo"
+                component={() => <UseMemo />}
+              />
+              <Route 
+                exact
+                path="/useCallBack"
+                component={() => <UseCallBack />}
               />
               <Route exact component={() => <NotFound />} />
             </Switch>
