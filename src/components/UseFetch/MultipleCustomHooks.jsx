@@ -1,11 +1,11 @@
 import React from "react";
 import { DualRing } from "react-awesome-spinners";
 
-import { useFetch } from "../../hooks/useFetch";
-import { useCounter } from "../../hooks/useCounter";
+import { useFetch, useCounter } from "../../hooks";
 
 import styled from "styled-components";
 import { errorBoundary } from "../ErrorBoundary/ErrorBoundary";
+import BlockQuote from "./BlockQuote";
 
 const Title = styled.div`
   font-size: ${(props) => props.size}em;
@@ -20,22 +20,6 @@ const CustomFragment = styled.div`
   .actions {
     display: block;
     text-align: center;
-  }
-`;
-
-const BlockQuote = styled.blockquote`
-  p {
-    margin-bottom: 0;
-  }
-
-  footer {
-    display: block;
-    font-size: 80%;
-    color: ${(props) => props.theme.color};
-
-    &::before {
-      content: "--- ";
-    }
   }
 `;
 
@@ -78,12 +62,7 @@ const MultipleCustomHooks = () => {
         {loading ? (
           <DualRing />
         ) : (
-          <BlockQuote>
-            <p>
-              <strong>{quote}</strong>
-            </p>
-            <footer>{author}</footer>
-          </BlockQuote>
+          <BlockQuote quote={quote} author={author} />
         )}
         <ButtonGroup>
           {counter > 1 &&

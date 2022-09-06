@@ -17,7 +17,6 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "rebass": "^4.0.7",
-    "styled-components": "^5",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
@@ -48,5 +47,8 @@
     "styled-components": "^5"
   },
   "keywords": [],
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "react-error-overlay": "^6.0.9"
+  }
 }

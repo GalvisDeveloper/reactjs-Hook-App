@@ -106,8 +106,8 @@ export const Menu = ({ theme, changeTheme }) => {
   //     setValue("home");
   //   }
   // }, []);
-
-  // console.log(value)
+  console.log(theme)
+  
 
   return (
     <Container>
@@ -166,7 +166,7 @@ export const Menu = ({ theme, changeTheme }) => {
 
       <ButtonTheme>
         <ThemeText>
-          <p>Dark theme?</p>
+          <p>{theme === 'dark' ? 'Light Theme?' : 'Dark theme?'}</p>
         </ThemeText>
         <SwitchContainer>
           <Switch checked={isDark} color="secondary" onChange={changeTheme} />

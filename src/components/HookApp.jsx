@@ -18,6 +18,7 @@ import MultipleCustomHooks from "./UseFetch/MultipleCustomHooks";
 import themes from "../constants/theme";
 import { getTheme } from "../utils/getTheme";
 import styled, { ThemeProvider } from "styled-components";
+import UseRef from "./UseRef/UseRef";
 
 const Content = styled.div`
   min-height: 100vh;
@@ -105,6 +106,11 @@ const HookApp = () => {
                 exact
                 path="/useFetch"
                 component={() => <MultipleCustomHooks />}
+              />
+              <Route 
+                exact
+                path="/useRef"
+                component={() => <UseRef />}
               />
               <Route exact component={() => <NotFound />} />
             </Switch>
