@@ -8,20 +8,20 @@ import {
   Switch
 } from "react-router-dom";
 
-import Menu from "./Menu/Menu";
-import NotFound from "./NotFound/NotFound";
 import Home from "./Home/Home";
-import CounterCustomHook from "./UseState/CounterCustomHook";
+import NotFound from "./NotFound/NotFound";
 import FormWithCustomHook from "./UseEffect/FormWithCustomHook";
 import MultipleCustomHooks from "./UseFetch/MultipleCustomHooks";
+import CounterCustomHook from "./UseState/CounterCustomHook";
 
+import styled, { ThemeProvider } from "styled-components";
 import themes from "../constants/theme";
 import { getTheme } from "../utils/getTheme";
-import styled, { ThemeProvider } from "styled-components";
-import FocusScreen from "./UseRef/FocusScreen";
-import UseMemo from "./UseMemo/UseMemo";
 import UseCallBack from "./UseCallBack/UseCallBack";
 import Layout from "./UseLayoutEffect/Layout";
+import Memorize from "./UseMemo/Memorize";
+import FocusScreen from "./UseRef/FocusScreen";
+import MenuNav from "./Menu/MenuNav";
 
 const Content = styled.div`
   min-height: 100vh;
@@ -65,31 +65,25 @@ const HookApp = () => {
     }
   };
 
-  // useEffect(() => {
-  //   if (localStorage.route && (localStorage.ruote === "" || localStorage.route === "/")) {
-  //     localStorage.setItem("route", "home");
-  //   }
-  // }, [])
+  useEffect(() => {
+    let themeValue = localStorage.getItem("isDark");
 
-  // useEffect(() => {
-  // let preferColor = "light";
-  // // console.log(window.matchMedia("(prefers-color-scheme: dark)"));
-  // if (localStorage.getItem("isDark") === null) {
-  //   preferColor = "dark";
-  //   const darkPref = window.matchMedia(
-  //     `(prefers-color-scheme: ${preferColor})`
-  //   );
-  //   localStorage.setItem("isDark", darkPref.matches);
-  //   localStorage.setItem("theme", preferColor);
-  // }
-  // console.log(theme);
-  // });
+    if (!themeValue) {
+      setTheme(initialTheme);
+    } else if (themeValue && themeValue === "true") {
+      setTheme({ isDark: true, name: themes.dark });
+      localStorage.setItem("isDark", true);
+    } else if (themeValue && themeValue === "false") {
+      setTheme({ isDark: false, name: themes.light })
+      localStorage.setItem("isDark", false);
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={getTheme(theme.name)}>
       <Content>
         <Router>
-          <Menu theme={theme.name} changeTheme={changeTheme} />
+          <MenuNav theme={theme.name} changeTheme={changeTheme} isDark={isDark} />
 
           {/* <Redirect from="/" to="/home" /> */}
           <Container>
@@ -110,22 +104,22 @@ const HookApp = () => {
                 path="/useFetch"
                 component={() => <MultipleCustomHooks />}
               />
-              <Route 
+              <Route
                 exact
                 path="/useRef"
                 component={() => <FocusScreen />}
               />
-               <Route 
+              <Route
                 exact
                 path="/useLayoutEffect"
                 component={() => <Layout />}
               />
-              <Route 
+              <Route
                 exact
                 path="/useMemo"
-                component={() => <UseMemo />}
+                component={() => <Memorize />}
               />
-              <Route 
+              <Route
                 exact
                 path="/useCallBack"
                 component={() => <UseCallBack />}

@@ -17,7 +17,7 @@ const Container = styled.blockquote`
   }
 `;
 
-const BlockQuote = ({ quote, author }) => {
+const BlockQuote = ({ quote, author, isLayout }) => {
 
   const pRef = useRef();
   const [boxSize, setBoxSize] = useState({
@@ -37,7 +37,9 @@ const BlockQuote = ({ quote, author }) => {
       </p>
       <footer>{author}</footer>
 
-      <code>{JSON.stringify(boxSize)}</code>
+      {isLayout &&
+        <code>{JSON.stringify(boxSize)}</code>
+      }
     </Container>
   )
 }

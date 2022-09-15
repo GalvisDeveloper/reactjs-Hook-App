@@ -57,7 +57,7 @@ const Layout = () => {
         {loading ? (
           <DualRing />
         ) : (
-          <BlockQuote quote={quote} author={author} />
+          <BlockQuote quote={quote} author={author} isLayout={true} />
         )}
         <ButtonGroup>
           {counter > 1 &&
