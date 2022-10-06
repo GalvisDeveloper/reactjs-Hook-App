@@ -22,7 +22,7 @@ const NotFound = () => {
     <div>
       <h1>404-Not Found 😢</h1>
       <Button>
-        <Link to="/">VOLVER A INICIO</Link>
+        <Link to="/" onClick={() => localStorage.setItem("route", "home")}>VOLVER A INICIO</Link>
       </Button>
     </div>
   );

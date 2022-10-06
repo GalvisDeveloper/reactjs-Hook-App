@@ -6,4 +6,7 @@ export default {
   color: "white",
   button: "white",
   buttonText: "black",
+  inputText: "black",
+  regularText: "white",
+  iconBackground: "black",
 };
